@@ -6,8 +6,13 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[],
-    hiddenimports=['pandas', 'openpyxl', 'xlrd'],
+    datas=[
+        ('assets/word_template.docx', 'assets'),
+        ('assets/count_template.xlsx', 'assets'),
+        ('assets/summary_template.docx', 'assets'),
+        ('assets/icon.ico', 'assets'),
+    ],
+    hiddenimports=['pandas', 'openpyxl', 'xlrd', 'docx'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -25,7 +30,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='BsmuExcelWorker',
+    name='RCPCSTSheduler',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -36,6 +41,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon='assets/icon.ico',
 )
 
 coll = COLLECT(
@@ -46,5 +52,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='BsmuExcelWorker',
+    name='RCPCSTSheduler',
 )

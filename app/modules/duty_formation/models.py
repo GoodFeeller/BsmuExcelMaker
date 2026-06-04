@@ -19,10 +19,13 @@ def column_letter_to_index(col: str) -> int:
 
 
 PROGRAM_NUMBER_COL = column_letter_to_index("F")
-PROGRAM_ALT_COL = column_letter_to_index("G")
+PROGRAM_MID_COL = column_letter_to_index("G")
+PROGRAM_ALT_COL = column_letter_to_index("H")
 STUDENTS_COL = column_letter_to_index("E")
 ROOM_COL = column_letter_to_index("B")
 TEACHER_COL = column_letter_to_index("J")
+DATE_COL = column_letter_to_index("A")
+PLAN_COL = column_letter_to_index("I")
 
 
 @dataclass
@@ -60,13 +63,35 @@ class SelectedRange:
         return excel_col - self.left_col
 
 @dataclass
+class ScheduleLine:
+    time: str = ""
+    teacher: str = ""
+    responsible: str = ""
+    room: str = ""
+    border_after: bool = False
+
+
+@dataclass
 class GroupAggregate:
     index: int
     group: str
-    times: list[str] = field(default_factory=list)
-    teachers: list[str] = field(default_factory=list)
-    responsible: list[str] = field(default_factory=list)
-    rooms: list[str] = field(default_factory=list)
+    lines: list[ScheduleLine] = field(default_factory=list)
+
+    @property
+    def times(self) -> list[str]:
+        return [line.time for line in self.lines]
+
+    @property
+    def teachers(self) -> list[str]:
+        return [line.teacher for line in self.lines]
+
+    @property
+    def responsible(self) -> list[str]:
+        return [line.responsible for line in self.lines]
+
+    @property
+    def rooms(self) -> list[str]:
+        return [line.room for line in self.lines]
 
     @property
     def times_text(self) -> str:
@@ -74,7 +99,7 @@ class GroupAggregate:
 
     @property
     def teachers_text(self) -> str:
-        return ",\n".join(self.teachers)
+        return "\n".join(self.teachers)
 
     @property
     def responsible_text(self) -> str:

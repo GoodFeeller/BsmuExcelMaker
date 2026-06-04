@@ -77,6 +77,42 @@ QLabel#toolbarFileLabel {
     padding-left: 8px;
 }
 
+QLabel#toolbarDateLabel,
+QLabel#toolbarDutyLabel {
+    color: #475569;
+    padding-left: 4px;
+    font-size: 10pt;
+}
+
+QDateEdit#reportDateEdit {
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 4px 10px;
+    min-width: 118px;
+    min-height: 28px;
+    font-size: 10pt;
+}
+
+QDateEdit#reportDateEdit:focus {
+    border-color: #2563eb;
+}
+
+QCalendarWidget {
+    min-width: 360px;
+    min-height: 300px;
+    font-size: 12pt;
+}
+
+QComboBox#dutySpecialistCombo {
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 4px 10px;
+    min-height: 28px;
+    font-size: 10pt;
+}
+
 QTabWidget::pane {
     border: 1px solid #e2e8f0;
     border-radius: 10px;
@@ -150,6 +186,77 @@ QStatusBar {
     padding: 4px 12px;
 }
 
+QLabel#homeTitle {
+    font-size: 24pt;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+QLabel#homeSubtitle {
+    font-size: 12pt;
+    color: #64748b;
+}
+
+QFrame#homeModuleCard {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+}
+
+QLabel#homeModuleNumber {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+QLabel#homeModuleTitle {
+    font-size: 14pt;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+QLabel#homeModuleDesc {
+    font-size: 10pt;
+    color: #64748b;
+}
+
+QPushButton#homeModuleButton {
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+
+QPushButton#homeModuleButton:hover {
+    background-color: #1d4ed8;
+}
+
+QPushButton#moduleBackButton {
+    background-color: transparent;
+    color: #2563eb;
+    border: none;
+    font-weight: 600;
+    padding: 8px 12px;
+}
+
+QPushButton#moduleBackButton:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+QLabel#modulePlaceholderTitle {
+    font-size: 18pt;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+QLabel#modulePlaceholderHint {
+    font-size: 12pt;
+    color: #64748b;
+}
+
 QLabel#welcomeTitle {
     font-size: 22pt;
     font-weight: 700;
@@ -217,8 +324,46 @@ QTableView#aggregationTable {
     background-color: #ffffff;
 }
 
-QSplitter::handle {
-    background-color: #e2e8f0;
-    width: 1px;
+QWidget#sheetSidebar {
+    background-color: #f8fafc;
+    border-right: 1px solid #e2e8f0;
+}
+
+QLabel#sheetSidebarTitle {
+    color: #475569;
+    font-size: 9pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+QListWidget#sheetList {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 4px;
+    outline: none;
+}
+
+QListWidget#sheetList::item {
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin: 2px 0;
+}
+
+QListWidget#sheetList::item:selected {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+    font-weight: 600;
+}
+
+QListWidget#sheetList::item:hover:!selected {
+    background-color: #f1f5f9;
+}
+
+QSplitter#scheduleSplitter::handle:horizontal {
+    background-color: transparent;
+    width: 14px;
+    margin: 8px 0;
 }
 """

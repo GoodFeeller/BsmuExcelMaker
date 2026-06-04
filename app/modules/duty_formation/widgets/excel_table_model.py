@@ -23,15 +23,21 @@ class ExcelTableModel(QAbstractTableModel):
         return len(self._frame.columns)
 
     def data(self, index: QModelIndex, role: int = Qt.DisplayRole):
-        if not index.isValid() or role != Qt.DisplayRole:
+        if not index.isValid():
+            return None
+        if role == Qt.TextAlignmentRole:
+            return Qt.AlignLeft | Qt.AlignTop
+        if role != Qt.DisplayRole:
             return None
         return format_cell(self._frame.iat[index.row(), index.column()])
 
     def headerData(self, section: int, orientation: Qt.Orientation, role: int = Qt.DisplayRole):
+        if role == Qt.TextAlignmentRole and orientation == Qt.Horizontal:
+            return Qt.AlignLeft | Qt.AlignTop
         if role != Qt.DisplayRole:
             return None
         if orientation == Qt.Horizontal:
-            from app.models import column_index_to_letter
+            from app.modules.duty_formation.models import column_index_to_letter
 
             return column_index_to_letter(section + 1)
         return str(section + 1)

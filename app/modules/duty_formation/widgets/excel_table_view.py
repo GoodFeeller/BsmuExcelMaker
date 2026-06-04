@@ -1,10 +1,11 @@
 import pandas as pd
-from PySide6.QtCore import Signal
+from PySide6.QtCore import Qt, Signal
 from PySide6.QtWidgets import QAbstractItemView, QHeaderView, QTableView
 
 from app.cell_utils import format_cell
-from app.excel_table_model import ExcelTableModel
-from app.models import SelectedRange
+from app.modules.duty_formation.models import SelectedRange
+from app.modules.duty_formation.widgets.excel_table_model import ExcelTableModel
+from app.table_delegate import TopAlignedItemDelegate
 
 
 class ExcelTableView(QTableView):
@@ -21,7 +22,10 @@ class ExcelTableView(QTableView):
         self.setSelectionBehavior(QAbstractItemView.SelectItems)
         self.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.setAlternatingRowColors(True)
+        self.setItemDelegate(TopAlignedItemDelegate(self))
         self.setWordWrap(False)
+        self.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.setShowGrid(True)
         self.setCornerButtonEnabled(True)
         self.horizontalHeader().setHighlightSections(False)
@@ -29,7 +33,7 @@ class ExcelTableView(QTableView):
         self.horizontalHeader().setSectionResizeMode(QHeaderView.Interactive)
         self.verticalHeader().setSectionResizeMode(QHeaderView.Interactive)
         self.horizontalHeader().setDefaultSectionSize(96)
-        self.verticalHeader().setDefaultSectionSize(24)
+        self.verticalHeader().setDefaultSectionSize(32)
 
     @property
     def sheet_name(self) -> str:

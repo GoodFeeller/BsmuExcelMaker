@@ -22,7 +22,7 @@ class WelcomeWidget(QWidget):
         card_layout.setSpacing(16)
         card_layout.setAlignment(Qt.AlignCenter)
 
-        title = QLabel("BsmuExcelWorker")
+        title = QLabel("RCPCST Sheduler")
         title.setObjectName("welcomeTitle")
         title.setAlignment(Qt.AlignCenter)
 

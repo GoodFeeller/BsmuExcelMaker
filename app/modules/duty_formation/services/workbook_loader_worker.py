@@ -2,7 +2,7 @@ from pathlib import Path
 
 from PySide6.QtCore import QThread, Signal
 
-from app.excel_loader import load_workbook
+from app.modules.duty_formation.services.excel_loader import load_workbook
 
 
 class WorkbookLoaderWorker(QThread):
